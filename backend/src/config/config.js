@@ -10,6 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET
 const CLIENT_URL = process.env.CLIENT_URL
 const BACKEND_URL = process.env.BACKEND_URL
 const NODE_ENV = process.env.NODE_ENV
+const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL
 
 if (!PORT) {
     throw new Error("PORT is not defined");
@@ -35,6 +36,9 @@ if (!BACKEND_URL) {
 if (!NODE_ENV) {
     throw new Error("NODE_ENV is not defined");
 }
+if (!RECEIVER_EMAIL) {
+    throw new Error("RECEIVER_EMAIL is not defined");
+}
 
 
 
@@ -46,5 +50,6 @@ export {
     JWT_SECRET,
     CLIENT_URL,
     BACKEND_URL,
-    NODE_ENV
+    NODE_ENV,
+    RECEIVER_EMAIL
 }

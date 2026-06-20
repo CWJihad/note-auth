@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer"
 import userModel from "../models/user.model.js"
 import { getFeedbackTemplate } from "../utils/email-templates.js"
-import {MAIL_PASS, MAIL_USER} from '../config/config.js'
+import {MAIL_PASS, MAIL_USER, RECEIVER_EMAIL} from '../config/config.js'
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -38,8 +38,8 @@ const sendFeedback = async (req, res) => {
         const html = getFeedbackTemplate(user, initials, subject, message)
 
         await transporter.sendMail({
-            from: `"Notes App" <${process.env.GMAIL_USER}>`,
-            to: process.env.RECEIVER_EMAIL,
+            from: `"Notes App" <${MAIL_USER}>`,
+            to: RECEIVER_EMAIL,
             subject: `[Feedback] ${subject} — from ${user.fullName}`,
             html,
         })
