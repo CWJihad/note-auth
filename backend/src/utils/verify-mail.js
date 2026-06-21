@@ -4,14 +4,7 @@ import {
   BACKEND_URL,
 } from "../config/config.js";
 import { getVerifyMailTemplate, getOtpTemplate } from "./email-templates.js";
-import SibApiV3Sdk from "sib-api-v3-sdk"
-
-// config brevo client
-const defaultClient = SibApiV3Sdk.ApiClient.instance
-const apiKey = defaultClient.authentications['api-key']
-apiKey.apiKey = BREVO_API_KEY
-
-const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi()
+import apiInstance from "./brevo-client.js";
 
 const verifyMail = async (token, email) => {
   

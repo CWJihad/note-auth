@@ -1,15 +1,7 @@
-import nodemailer from "nodemailer"
 import userModel from "../models/user.model.js"
 import { getFeedbackTemplate } from "../utils/email-templates.js"
-import {MAIL_PASS, MAIL_USER, RECEIVER_EMAIL} from '../config/config.js'
-
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: MAIL_USER,
-        pass: MAIL_PASS,
-    },
-})
+import { MAIL_FROM, RECEIVER_EMAIL} from '../config/config.js'
+import apiInstance from "../utils/brevo-client.js"
 
 const sendFeedback = async (req, res) => {
     try {
@@ -37,12 +29,15 @@ const sendFeedback = async (req, res) => {
 
         const html = getFeedbackTemplate(user, initials, subject, message)
 
-        await transporter.sendMail({
-            from: `"Notes App" <${MAIL_USER}>`,
-            to: RECEIVER_EMAIL,
+        const sendSmtpEmail = {
+            sender: { name: "Note-Auth", email: MAIL_FROM },
+            to: [{ email: RECEIVER_EMAIL }],
+            replyTo: { email: user.email, name: user.fullName }, // ← lets you hit "reply" and respond directly to the user
             subject: `[Feedback] ${subject} — from ${user.fullName}`,
-            html,
-        })
+            htmlContent: html,
+        }
+
+        await apiInstance.sendTransacEmail(sendSmtpEmail)
 
         return res.status(200).json({
             success: true,
