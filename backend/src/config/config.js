@@ -18,12 +18,6 @@ if (!PORT) {
 if (!MONGO_URI) {
     throw new Error("MONGO_URI is not defined");
 }
-if (!MAIL_USER) {
-    throw new Error("MAIL_USER is not defined");
-}
-if (!MAIL_PASS) {
-    throw new Error("MAIL_PASS is not defined");
-}
 if (!JWT_SECRET) {
     throw new Error("JWT_SECRET is not defined");
 }
@@ -51,8 +45,6 @@ if (!MAIL_FROM) {
 export {
     PORT,
     MONGO_URI,
-    MAIL_USER,
-    MAIL_PASS,
     JWT_SECRET,
     CLIENT_URL,
     BACKEND_URL,
