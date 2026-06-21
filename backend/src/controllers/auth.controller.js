@@ -279,7 +279,7 @@ const verifyOtp = async (req, res) => {
     res.cookie("resetToken", resetToken, {
       httpOnly: true,
       secure: NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 10 * 60 * 1000,
     });
 
@@ -343,7 +343,7 @@ const resetPassword = async (req, res) => {
     res.clearCookie("resetToken", {
       httpOnly: true,
       secure: NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "none",
     });
 
     return res.status(200).json({

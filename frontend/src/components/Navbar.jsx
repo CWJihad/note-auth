@@ -21,6 +21,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { getData } from "@/context/userContext";
 import axios from "axios";
+import { VITE_API_URL } from "../index.js";
 
 const Navbar = () => {
   const { user, setUser, authLoading } = getData();
@@ -46,7 +47,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/auth/logout",
+        `${VITE_API_URL}/api/auth/logout`,
         {},
         { withCredentials: true },
       );
