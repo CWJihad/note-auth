@@ -4,8 +4,6 @@ dotenv.config()
 
 const PORT = process.env.PORT || 8000
 const MONGO_URI = process.env.MONGO_URI
-const MAIL_USER = process.env.MAIL_USER
-const MAIL_PASS = process.env.MAIL_PASS
 const JWT_SECRET = process.env.JWT_SECRET
 const CLIENT_URL = process.env.CLIENT_URL
 const BACKEND_URL = process.env.BACKEND_URL
