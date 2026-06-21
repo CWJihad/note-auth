@@ -11,6 +11,8 @@ const CLIENT_URL = process.env.CLIENT_URL
 const BACKEND_URL = process.env.BACKEND_URL
 const NODE_ENV = process.env.NODE_ENV
 const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL
+const BREVO_API_KEY = process.env.BREVO_API_KEY
+const MAIL_FROM = process.env.MAIL_FROM
 
 if (!PORT) {
     throw new Error("PORT is not defined");
@@ -39,6 +41,12 @@ if (!NODE_ENV) {
 if (!RECEIVER_EMAIL) {
     throw new Error("RECEIVER_EMAIL is not defined");
 }
+if (!BREVO_API_KEY) {
+    throw new Error("BREVO_API_KEY is not defined");
+}
+if (!MAIL_FROM) {
+    throw new Error("MAIL_FROM is not defined");
+}
 
 
 
@@ -51,5 +59,7 @@ export {
     CLIENT_URL,
     BACKEND_URL,
     NODE_ENV,
-    RECEIVER_EMAIL
+    RECEIVER_EMAIL,
+    BREVO_API_KEY,
+    MAIL_FROM
 }
