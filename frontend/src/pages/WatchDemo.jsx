@@ -26,9 +26,9 @@ const sections = [
       },
       {
         step: 3,
-        title: "Verify Your Email",
+        title: "Verify Your Email on Spam Folder",
         description:
-          "Click the 'Verify My Email' button inside the email. Your account will be activated instantly and you will be redirected to the login page.",
+          "Click the 'Verify My Email' button inside the email or (Spam Folder). Your account will be activated instantly and you will be redirected to the login page.",
         image: images.gettingStart.verifyEmail,
       },
       {
