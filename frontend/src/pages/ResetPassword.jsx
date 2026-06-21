@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { VITE_API_URL } from "../index.js";
+
 
 const ResetPassword = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +35,7 @@ const ResetPassword = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/reset-password",
+        `${VITE_API_URL}/api/auth/reset-password`,
         formData,
         {
           headers: { "Content-Type": "application/json" },

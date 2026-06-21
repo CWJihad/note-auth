@@ -17,7 +17,6 @@ import WatchDemo from './pages/WatchDemo'
 const router = createBrowserRouter([
   {
     path: '/',
-    // element:  <ProtectedRoute><Home/></ProtectedRoute>
     element:  <Home/>
   },
   {

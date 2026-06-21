@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { VITE_API_URL } from "../index.js";
+
 
 const VerifyOtp = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +32,7 @@ const VerifyOtp = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/verify-otp",
+        `${VITE_API_URL}/api/auth/verify-otp`,
         { email, otp: formData.otp },
         {
           headers: { "Content-Type": "application/json" },

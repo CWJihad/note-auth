@@ -16,8 +16,10 @@ import {
   Loader2,
   ShieldCheck,
 } from "lucide-react";
+import { VITE_API_URL } from "../index.js";
 
-const API = "http://localhost:3000/api";
+
+const API = `${VITE_API_URL}/api`;
 const token = () => localStorage.getItem("accessToken");
 const authHeader = () => ({ Authorization: `Bearer ${token()}` });
 

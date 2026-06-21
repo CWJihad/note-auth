@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { VITE_API_URL } from "../index.js";
+
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +32,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
+        `${VITE_API_URL}/api/auth/register`,
         formData,
         {
           headers: { "Content-Type": "application/json" },

@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar"
 import { getData } from "@/context/userContext"
 import axios from "axios"
 import { MessageSquare, Send, Loader2 } from "lucide-react"
+import {VITE_API_URL} from '../index.js'
 
 const Feedback = () => {
   const { user } = getData()
@@ -22,7 +23,7 @@ const Feedback = () => {
     try {
       const token = localStorage.getItem("accessToken")
       await axios.post(
-        "http://localhost:3000/api/feedback",
+        `${VITE_API_URL}/api/feedback`,
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       )

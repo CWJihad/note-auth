@@ -3,16 +3,15 @@ import axios from "axios";
 import Navbar from "@/components/Navbar";
 import {
   CrossIcon,
-  Delete,
   Loader2,
-  LucideDelete,
   Mailbox,
   Notebook,
   Pencil,
   Plus,
-  Trash,
   Trash2,
 } from "lucide-react";
+import { VITE_API_URL } from "../index.js";
+
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -27,7 +26,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       const token = localStorage.getItem("accessToken"); // ← get token
-      const response = await axios.get("http://localhost:3000/api/notes", {
+      const response = await axios.get(`${VITE_API_URL}/api/notes`, {
         headers: { Authorization: `Bearer ${token}` }, // ← send in header
       });
       setNotes(response.data.notes);
@@ -43,7 +42,7 @@ const Notes = () => {
     try {
       const token = localStorage.getItem("accessToken"); // ← get token
       const response = await axios.post(
-        "http://localhost:3000/api/notes",
+        `${VITE_API_URL}/api/notes`,
         modalData,
         {
           headers: { Authorization: `Bearer ${token}` }, // ← send in header
@@ -64,7 +63,7 @@ const Notes = () => {
     try {
       const token = localStorage.getItem("accessToken");
       const response = await axios.put(
-        `http://localhost:3000/api/notes/${editData.id}`,
+        `${VITE_API_URL}/api/notes/${editData.id}`,
         { title: editData.title, content: editData.content },
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -85,7 +84,7 @@ const Notes = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("accessToken");
-      await axios.delete(`http://localhost:3000/api/notes/${id}`, {
+      await axios.delete(`${VITE_API_URL}/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // remove note from list without refetching

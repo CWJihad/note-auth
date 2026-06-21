@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getData } from "@/context/userContext";
+import { VITE_API_URL } from "../index.js";
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +27,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        `${VITE_API_URL}/api/auth/login`,
         formData,
         {
           headers: { "Content-Type": "application/json" },
