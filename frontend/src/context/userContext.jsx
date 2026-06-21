@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import {VITE_API_URL} from "../index.js"
 
 export const userContext = createContext();
 
@@ -23,7 +24,7 @@ export const UserProvider = ({ children }) => {
       }
 
       try {
-        const res = await axios.get("http://localhost:3000/api/profile", {
+        const res = await axios.get(`${VITE_API_URL}/api/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(res.data.user);
